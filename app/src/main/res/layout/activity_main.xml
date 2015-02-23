@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView android:text="MainFriend" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:id="@+id/textView" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:text="Chatroom"
+        android:id="@+id/buttonm2c"
+        android:layout_alignParentBottom="true"
+
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:text="Add"
+        android:id="@+id/buttonm2aj"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/buttonm2c"
+        android:layout_toEndOf="@+id/buttonm2c" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:text="Friendlist"
+        android:id="@+id/button"
+        android:layout_alignBottom="@+id/buttonm2c"
+        android:layout_toLeftOf="@+id/buttonm2c"
+        android:layout_toStartOf="@+id/buttonm2c" />
+
+</RelativeLayout>
