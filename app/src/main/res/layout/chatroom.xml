@@ -17,6 +17,8 @@
         android:layout_height="60dp"
         android:text="Friendlist"
         android:id="@+id/buttonc2m"
+        android:drawableRight="@drawable/ic_action_person"
+        android:textSize="10dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/button3"
         android:layout_toStartOf="@+id/button3" />
@@ -26,6 +28,8 @@
         android:layout_height="60dp"
         android:text="Add"
         android:id="@+id/buttonc2aj"
+        android:drawableRight="@drawable/ic_action_new"
+        android:textSize="10dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/button3"
         android:layout_toEndOf="@+id/button3" />
@@ -34,6 +38,8 @@
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:text="Chatroom"
+        android:drawableRight="@drawable/ic_action_chat"
+        android:textSize="10dp"
         android:id="@+id/button3"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

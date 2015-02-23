@@ -17,6 +17,8 @@
         android:layout_height="60dp"
         android:text="Chatroom"
         android:id="@+id/buttonjoin2chat"
+        android:drawableRight="@drawable/ic_action_chat"
+        android:textSize="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -25,6 +27,8 @@
         android:layout_height="60dp"
         android:text="Friendlist"
         android:id="@+id/buttonjoin2main"
+        android:drawableRight="@drawable/ic_action_person"
+        android:textSize="10dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/buttonjoin2chat"
         android:layout_toStartOf="@+id/buttonjoin2chat" />
@@ -34,6 +38,8 @@
         android:layout_height="60dp"
         android:text="Add"
         android:id="@+id/button2"
+        android:drawableRight="@drawable/ic_action_new"
+        android:textSize="10dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/buttonjoin2chat"
         android:layout_toEndOf="@+id/buttonjoin2chat" />
