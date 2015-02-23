@@ -1,46 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADDJOIN"
-        android:id="@+id/textView3"
-        android:textSize="40dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="ADDJOIN"
+        android:textSize="40dp" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:text="Chatroom"
         android:id="@+id/buttonjoin2chat"
-        android:drawableRight="@drawable/ic_action_chat"
-        android:textSize="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:layout_width="110dp"
         android:layout_height="60dp"
-        android:text="Friendlist"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:drawableRight="@drawable/ic_action_chat"
+        android:text="Chatroom"
+        android:textSize="10dp" />
+
+    <Button
         android:id="@+id/buttonjoin2main"
-        android:drawableRight="@drawable/ic_action_person"
-        android:textSize="10dp"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/buttonjoin2chat"
-        android:layout_toStartOf="@+id/buttonjoin2chat" />
+        android:layout_toStartOf="@+id/buttonjoin2chat"
+        android:drawableRight="@drawable/ic_action_person"
+        android:text="Friendlist"
+        android:textSize="10dp" />
 
     <Button
+        android:id="@+id/button2"
         android:layout_width="110dp"
         android:layout_height="60dp"
-        android:text="Add"
-        android:id="@+id/button2"
-        android:drawableRight="@drawable/ic_action_new"
-        android:textSize="10dp"
         android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/buttonjoin2chat"
         android:layout_toRightOf="@+id/buttonjoin2chat"
-        android:layout_toEndOf="@+id/buttonjoin2chat" />
+        android:drawableRight="@drawable/ic_action_new"
+        android:text="Add"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/buttonCreateroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="160dp"
+        android:text="Create" />
+
+    <SeekBar
+        android:id="@+id/seekBartimer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonCreateroom"
+        android:layout_alignLeft="@+id/textViewtempnumber"
+        android:layout_alignStart="@+id/textViewtempnumber"
+        android:layout_marginBottom="50dp"
+        android:max="800" />
+
+    <TextView
+        android:id="@+id/textViewtimebar"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/seekBartimer"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:hint="drag your timer"
+        android:textIsSelectable="false"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editTextroomname"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/textViewtimebar"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:hint="請輸入名稱:"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textViewtempnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonCreateroom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Temporary Number"
+        android:textSize="40dp" />
+
+    <ImageView
+        android:id="@+id/imageViewtempQR"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/textViewtempnumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/qr_code_sample" />
+
+    <Button
+        android:id="@+id/buttonAddroom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignTop="@+id/buttonCreateroom"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:text="Add" />
 </RelativeLayout>
