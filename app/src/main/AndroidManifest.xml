@@ -19,5 +19,6 @@
         <activity android:name=".Chatroom" android:label="Chatroom" />
         <activity android:name=".Addjoin" android:label="Addjoin" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
