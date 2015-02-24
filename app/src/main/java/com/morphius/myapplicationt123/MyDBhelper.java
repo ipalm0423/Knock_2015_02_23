@@ -30,10 +30,14 @@ public class MyDBhelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
 
+
+
+
+
         final String INIT_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NAME_COLUMN + " TEXT NOT NULL, " +
-                HIDEID_COLUMN + " TEXT NOT NULL, " +
+                HIDEID_COLUMN + " TEXT, " +
                 COUNTTIME_COLUMN + " INTEGER)";
         db.execSQL(INIT_TABLE);
 

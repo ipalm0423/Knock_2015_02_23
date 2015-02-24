@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
     }
     private void showInList(){
         SQLiteDatabase dbRead = dbhelper.getReadableDatabase();
-        Cursor cursor = dbRead.rawQuery("select NAME_COLUMN from " + TABLE_NAME + " ORDER BY COUNTTIME_COLUMN DESC", null);
+        Cursor cursor = dbRead.rawQuery("select name from " + TABLE_NAME + " ORDER BY counttimer DESC", null);
         String[] friendlist = new String[cursor.getCount()];
         int row_count = cursor.getCount();
         if (row_count != 0) {

@@ -46,7 +46,7 @@ public class Addjoin extends Activity {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editroomName != null){
+                if (editroomName.getText().toString() != null){
                     add();
                 }else {
                     Toast.makeText(Addjoin.this, "請輸入房間名稱", Toast.LENGTH_SHORT).show();
