@@ -93,9 +93,10 @@ public class Addjoin extends Activity {
         });
     }
     private void add(){
+        EditText editTextName = (EditText)findViewById(R.id.editTextroomname);
         SQLiteDatabase db = MainActivity.dbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(MyDBhelper.NAME_COLUMN, editroomName.getText().toString());
+        values.put(MyDBhelper.NAME_COLUMN, editTextName.getText().toString());
         values.put(MyDBhelper.COUNTTIME_COLUMN, seekBartimer.getProgress());
         //values.put(MyDBhelper.HIDEID_COLUMN, editEmail.getText().toString()); 等待伺服器設定HIDEID
         db.insert(MyDBhelper.TABLE_NAME, null, values);

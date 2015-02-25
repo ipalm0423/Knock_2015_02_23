@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import static com.morphius.myapplicationt123.MyDBhelper.COUNTTIME_COLUMN;
 import static com.morphius.myapplicationt123.MyDBhelper.HIDEID_COLUMN;
 import static com.morphius.myapplicationt123.MyDBhelper.NAME_COLUMN;
@@ -22,6 +25,7 @@ import static com.morphius.myapplicationt123.MyDBhelper.TABLE_NAME;
 public class MainActivity extends Activity {
 
     public static MyDBhelper dbhelper;
+
 
     public void initView(){
     }
@@ -76,26 +80,31 @@ public class MainActivity extends Activity {
         return cursor;
     }
     private void showInList(){
-        SQLiteDatabase dbRead = dbhelper.getReadableDatabase();
-        Cursor cursor = dbRead.rawQuery("select name from " + TABLE_NAME + " ORDER BY counttimer DESC", null);
-        String[] friendlist = new String[cursor.getCount()];
-        int row_count = cursor.getCount();
-        if (row_count != 0) {
-            cursor.moveToFirst();
-            for (int i = 0; i < row_count; i++){
+        Cursor cursor = getCursor();
+        final String[] friendlist = new String[cursor.getCount()];
+        int[] timelist = new int[cursor.getCount()];
+        int row_number = cursor.getCount();
 
-                friendlist[i] = cursor.getString(0);
+        if (row_number != 0){
+            cursor.moveToFirst();
+            for (int i = 0; i < row_number; i++) {
+                String name = cursor.getString(1);
+                int counttime = cursor.getInt(3);
+                friendlist[i] = name;
+                timelist[i] = counttime;
+                cursor.moveToNext();
             }
 
         }
-
-        ListView listViewfriends = (ListView)findViewById(R.id.listViewFriends);
-        listViewfriends.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, friendlist));
-
-
-
-
-
+        final ListView listViewfriends = (ListView)findViewById(R.id.listViewFriends);
+        listViewfriends.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_2, friendlist));
+        listViewfriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //等待聊天室java建立
+                Toast.makeText(getApplicationContext(), "你選擇了" + friendlist[position], Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
