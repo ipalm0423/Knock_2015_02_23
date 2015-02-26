@@ -14,7 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 import static com.morphius.myapplicationt123.MyDBhelper.COUNTTIME_COLUMN;
 import static com.morphius.myapplicationt123.MyDBhelper.HIDEID_COLUMN;
@@ -80,9 +85,8 @@ public class MainActivity extends Activity {
         return cursor;
     }
     private void showInList(){
+        ArrayList<HashMap<String, Object>> friendList = new ArrayList<HashMap<String, Object>>();
         Cursor cursor = getCursor();
-        final String[] friendlist = new String[cursor.getCount()];
-        int[] timelist = new int[cursor.getCount()];
         int row_number = cursor.getCount();
 
         if (row_number != 0){
@@ -90,21 +94,24 @@ public class MainActivity extends Activity {
             for (int i = 0; i < row_number; i++) {
                 String name = cursor.getString(1);
                 int counttime = cursor.getInt(3);
-                friendlist[i] = name;
-                timelist[i] = counttime;
+                HashMap<String, Object> item = new HashMap<String, Object>();
+                item.put("name", name);
+                item.put("counttime", "聊天時間剩下:" + counttime + "小時");
+                friendList.add(item);
                 cursor.moveToNext();
             }
 
         }
-        final ListView listViewfriends = (ListView)findViewById(R.id.listViewFriends);
-        listViewfriends.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_2, friendlist));
-        listViewfriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        SimpleAdapter adapter = new SimpleAdapter(this, friendList, R.layout.singlefriendlist, new String[] {"name", "counttime"}, new int[]{R.id.title_text, R.id.date_text});
+        final ListView listViewFriends = (ListView)findViewById(R.id.listViewFriends);
+        listViewFriends.setAdapter(adapter);
+        /*listViewFriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //等待聊天室java建立
-                Toast.makeText(getApplicationContext(), "你選擇了" + friendlist[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "你選擇了" + friendList[position], Toast.LENGTH_SHORT).show();
             }
-        });
+        }); */
 
     }
 
