@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, Chatroom.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, Addjoin.class);
                 startActivity(intent);
-                finish();
+
             }
         });
         initView();
