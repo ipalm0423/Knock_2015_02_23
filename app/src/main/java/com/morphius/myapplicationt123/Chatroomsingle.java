@@ -5,6 +5,7 @@ package com.morphius.myapplicationt123;
 // http://gogkmit.wikidot.com/demo:socket03
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Handler;
@@ -21,7 +22,7 @@ import java.net.UnknownHostException;
 public class Chatroomsingle extends Activity{
 
     EditText editTextType, editTextList;
-    Button buttonSend;
+    Button buttonSend, buttonBack;
     OutputStream outputStream;
     Handler handler;
 
@@ -32,10 +33,12 @@ public class Chatroomsingle extends Activity{
         editTextList = (EditText)findViewById(R.id.editTestChatList);
         editTextType = (EditText)findViewById(R.id.editTextType);
         buttonSend = (Button)findViewById(R.id.buttonSend);
+        buttonBack = (Button)findViewById(R.id.buttonBack);
+
 
         try {
             //定義客戶連接的socket
-            Socket clientsocket = new Socket("本機IP",30000);
+            Socket clientsocket = new Socket("122.116.90.83",30000);
             //启動客戶端監聽線程
             new Thread(new ClientThread(clientsocket,handler)).start();
             outputStream = clientsocket.getOutputStream();
@@ -45,12 +48,15 @@ public class Chatroomsingle extends Activity{
             e.printStackTrace();
         }
 
+
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     //得到輸入框中的內容，寫入到輸入流中
-                    outputStream.write((editTextType.getText().toString()+"\r\n").getBytes("utf-8"));
+                    String msgTemp = editTextType.getText().toString();
+                    outputStream.write((msgTemp+"\r\n").getBytes("utf-8"));
+                    editTextList.append("\n"+msgTemp);
                     editTextType.setText("");
                 } catch (UnsupportedEncodingException e) {
                     // TODO Auto-generated catch block
@@ -63,9 +69,18 @@ public class Chatroomsingle extends Activity{
             }
 
         });
-        handler = new android.os.Handler(){
+        buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void handleMessage(Message msg){
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Chatroomsingle.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
                 super.handleMessage(msg);
                 if (msg.what == 1){
                     //得到服務器返回的信息
@@ -73,6 +88,7 @@ public class Chatroomsingle extends Activity{
                 }
             }
         };
+
 
     }
 

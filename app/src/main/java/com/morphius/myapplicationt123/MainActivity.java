@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import static android.provider.BaseColumns._ID;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //http://j796160836.pixnet.net/blog/post/30577968-%5Bandroid%5D-%E4%BD%BF%E7%94%A8http%E7%9A%84post%E6%96%B9%E5%BC%8F%E5%92%8C%E7%B6%B2%E9%A0%81%E8%A1%A8%E5%96%AE%E6%BA%9D%E9%80%9A-(%E5%8A%A0
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         Button btm2c = (Button)findViewById(R.id.buttonm2c);
         Button btm2aj = (Button)findViewById(R.id.buttonm2aj);
         btm2c.setOnClickListener(new View.OnClickListener() {
@@ -105,13 +111,16 @@ public class MainActivity extends Activity {
         SimpleAdapter adapter = new SimpleAdapter(this, friendList, R.layout.singlefriendlist, new String[] {"name", "counttime"}, new int[]{R.id.title_text, R.id.date_text});
         final ListView listViewFriends = (ListView)findViewById(R.id.listViewFriends);
         listViewFriends.setAdapter(adapter);
-        /*listViewFriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewFriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //等待聊天室java建立
-                Toast.makeText(getApplicationContext(), "你選擇了" + friendList[position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "你選擇了" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, Chatroomsingle.class);
+                startActivity(intent);
+
             }
-        }); */
+        });
 
     }
 
